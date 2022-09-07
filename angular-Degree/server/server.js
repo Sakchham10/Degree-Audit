@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
 const bp = require("body-parser");
-const Catalog = require("../src/models/Catalog");
-const Student = require("../src/models/Student");
+const Catalog = require("./models/Catalog");
+const Student = require("./models/Student");
 const cors = require("cors");
 try {
   mongoose.connect(
@@ -25,7 +25,7 @@ app.use(express.json());
 
 app.get("/catalog", async (req, res) => {
   const subjects = await Catalog.find({});
-  res.send(subjects);
+  res.send(subjects[0]);
 });
 
 app.post("/addDegree/:id", async (req, res) => {
@@ -46,7 +46,6 @@ app.get("/degree/:id", async (req, res) => {
 app.post("/login", async (req, res) => {
   console.log(req.body);
 });
-
 app.listen(3100, () => {
   console.log("Server connected");
 });

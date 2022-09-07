@@ -1,0 +1,25 @@
+<div class="card mt-3 ms-2">
+  <form class="mt-2 ms-2 mb-2" [formGroup]="mainForm">
+    <div class="ms-1 mb-1">
+      <label for="username" class="label">Username</label>
+      <input
+        type="text"
+        id="username"
+        class="input-field"
+        formControlName="username"
+      />
+    </div>
+    <div class="ms-1 mb-1">
+      <label for="password" class="label">Password</label>
+      <input
+        type="password"
+        id="password"
+        class="input-field"
+        formControlName="password"
+      />
+    </div>
+    <button class="float-end me-2 btn btn-primary" (click)="onLogin()">
+      Login
+    </button>
+  </form>
+</div>

@@ -1,0 +1,11 @@
+<div *ngFor="let category of catalog | keyvalue">
+  <b *ngIf="!category.key.match('_id') && !this.category.key.match('__v')">{{
+    category.key
+  }}</b>
+  <div *ngFor="let subj of category.value">
+    <p>
+      {{ subj }}
+      <i class="fa-solid fa-cart-plus fa-lg" (click)="addToCart(subj)"></i>
+    </p>
+  </div>
+</div>
