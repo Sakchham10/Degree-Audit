@@ -28,16 +28,17 @@ app.get("/catalog", async (req, res) => {
   res.send(subjects[0]);
 });
 
-app.post("/addDegree/:id", async (req, res) => {
-  console.log(req.body);
-});
-
 app.post("/register", async (req, res) => {
   const student = new Student(req.body);
-  await student.save();
+  try {
+    await student.save();
+  } catch (e) {
+    res.send(e);
+  }
   res.send(student._id);
 });
-app.get("/degree/:id", async (req, res) => {
+
+app.get("/student/:id", async (req, res) => {
   const id = req.params.id;
   const student = await student.findById(id);
   const degree = student.curr_degree;

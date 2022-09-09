@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { json } from 'express';
 import { WebRequestsService } from './web-requests.service';
 
 @Injectable({
@@ -11,7 +10,7 @@ export class LoginService {
   login(username: string | null, password: string | null) {
     return this.webRequest.post(
       '/login',
-      JSON.stringify({ Username: username, Password: password })
+      JSON.stringify({ username, password })
     );
   }
 }
